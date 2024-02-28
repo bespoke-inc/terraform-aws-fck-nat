@@ -20,6 +20,7 @@ module "fck-nat" {
   vpc_id               = "vpc-abc1234"
   subnet_id            = "subnet-abc1234"
   # ha_mode              = true                 # Enables high-availability mode
+  # ha_mode_enabled_metrics = ["GroupInServiceInstances"] # Enables specified Cloudwatch metrics collection for high-availability mode
   # eip_allocation_ids   = ["eipalloc-abc1234"] # Allocation ID of an existing EIP
   # use_cloudwatch_agent = true                 # Enables Cloudwatch agent and have metrics reported
 
@@ -79,6 +80,7 @@ module "fck-nat" {
 | <a name="input_encryption"></a> [encryption](#input\_encryption) | Whether or not to encrypt the EBS volume | `bool` | `true` | no |
 | <a name="input_ha_additional_instance_types"></a> [ha\_additional\_instance\_types](#input\_ha\_additional\_instance\_types) | Additional instance types used by autoscaling rebalancing when the primary instance is unavailable | `list(string)` | <pre>[<br>  "t4g.small"<br>]</pre> | no |
 | <a name="input_ha_mode"></a> [ha\_mode](#input\_ha\_mode) | Whether or not high-availability mode should be enabled via autoscaling group | `bool` | `true` | no |
+| <a name="input_ha_mode_enabled_metrics"></a> [ha\_mode\_enabled\_metrics](#input\_ha\_mode\_enabled\_metrics) | Whether or not to enable autoscaling group cloudwatch metrics collection for specified metrics. Disabled by default or when no metrics were provided | `list(string)` | `[]` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type to use for the NAT instance | `string` | `"t4g.micro"` | no |
 | <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | Will use the provided KMS key ID to encrypt the EBS volume. Uses the default KMS key if none provided | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name used for resources created within the module | `string` | n/a | yes |

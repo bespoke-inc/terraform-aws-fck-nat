@@ -55,6 +55,12 @@ variable "ha_mode" {
   default     = true
 }
 
+variable "ha_mode_enabled_metrics" {
+  description = "Whether or not to enable autoscaling group cloudwatch metrics collection for specified metrics. Disabled by default or when no metrics were provided"
+  type        = list(string)
+  default     = []
+}
+
 variable "ha_additional_instance_types" {
   description = "Additional instance types used by autoscaling rebalancing when the primary instance is unavailable"
   type        = list(string)
